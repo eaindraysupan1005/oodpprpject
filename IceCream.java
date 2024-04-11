@@ -5,8 +5,16 @@ import java.util.ArrayList;
 
 public class IceCream {
     protected String flavor;
-    protected double price;
+    protected String size;
 
+    public IceCream(String flavor, String size){
+        this.flavor = flavor;
+        this.size = size;
+    }
+
+    public void showDetails(){
+        System.out.print("Flavor: " + flavor + "Size: "+ size );
+    }
     
 }
 
