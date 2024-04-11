@@ -1,2 +1,4 @@
-strawberry, cone, 23.4
-blueberry, cone, 24.5
+strawberry,cone,23.4
+blueberry,cone,24.5
+macha,cone,23.5
+vanilla,cone,25.6
