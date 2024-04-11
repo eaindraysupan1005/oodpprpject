@@ -11,10 +11,8 @@ public class cone extends IceCream {
 	
 	
 	@Override
-	public String toString(){
-	
-        return "Flavor: " + flavor + ", Type: " + type + ", Price: $" + price;
-    
+	public void showDetails(){
+		
 	}
 	
 

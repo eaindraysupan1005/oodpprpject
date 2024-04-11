@@ -8,19 +8,15 @@ public class ReadIceCreamMenu {
         String filename = "menu.txt";
         ArrayList<IceCream> menuItems = new ArrayList<>();
 
+        System.out.println();
+
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(", ");
-                if (parts.length == 3) { // Assuming each line has flavor, type, and price
+                String[] parts = line.split(" ");
+                if (parts.length == 2) { // Assuming each line has flavor, type, and price
                     String flavor = parts[0].trim();
-                    String type = parts[1].trim();
-                    double price = Double.parseDouble(parts[2].trim());
-                    if(type == "cone"){
-                    IceCream menuItem = new Cup(flavor, price);
-                    menuItems.add(menuItem);
-                    }
-                    
+                    double price = Double.parseDouble(parts[1].trim());                                     
                 } else {
                     System.out.println("Invalid line format: " + line);
                 }

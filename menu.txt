@@ -1,4 +1,9 @@
-strawberry,cone,23.4
-blueberry,cone,24.5
-macha,cone,23.5
-vanilla,cone,25.6
+strawberry 23.4
+blueberry 24.5
+macha 27.8
+cookie 28.1
+vanilla 23.9
+chocolate 26.5
+durian 29.1
+lime 27.2
+rainbow 25.5
