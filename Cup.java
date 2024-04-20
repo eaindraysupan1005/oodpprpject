@@ -5,17 +5,14 @@ public class Cup extends IceCream{
 	
 	
 	public Cup(String flavor, double price, String type, String size) {
-		super(flavor, size);
+		super(flavor, price);
 		this.type = type;
 		this.price = price + 10.0;
 		
 	}
 
     @Override
-	public void showDetails(){
-	
-       super.showDetails();
-	   System.out.println("Type: "+ type + "Price "+ price);
-    
+	public String toString(){
+		return super.toString()+" type: "+type+" price: "+price;
 	}
 }
