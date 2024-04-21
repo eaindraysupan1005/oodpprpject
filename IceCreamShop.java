@@ -45,8 +45,7 @@ public class IceCreamShop {
                 chooseIcecream();
             }
             else if(s1.equals("n") || s1.equals("N")){
-                confirmOrder();
-                break;
+                 break;
             }           
         }
         else{
@@ -67,6 +66,7 @@ public class IceCreamShop {
         catch(IOException e){
             System.out.println("Error: "+ e.getMessage());
         }
+        confirmOrder();
 
 
 
@@ -133,9 +133,17 @@ public class IceCreamShop {
 
     public static void viewReceipt(){
     
-        for(IceCream order:orders){
-            System.out.println(order.toString());
+        String filename = "order.txt";
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
         }
+
         System.out.println("Total Price: "+ totalprice);
     }
 
