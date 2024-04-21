@@ -1,9 +1,7 @@
-strawberry 23.4
-blueberry 24.5
-macha 27.8
-cookie 28.1
-vanilla 23.9
-chocolate 26.5
-durian 29.1
-lime 27.2
-rainbow 25.5
+strawberry 30.5
+blueberry 33.5
+macha 32.5
+cookie 32.5
+vanilla 30.5
+chocolate 30.5
+durian 35.5
