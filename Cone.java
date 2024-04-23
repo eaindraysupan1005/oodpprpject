@@ -1,9 +1,9 @@
-public class cone extends IceCream {
+public class Cone extends IceCream {
 
 	private String type;
 	private int count;
 		
-	public cone(String flavor, double price, String type, int count) {
+	public Cone(String flavor, double price, String type, int count) {
 		super(flavor, price);
 		this.type = type;		
 		this.count = count;
@@ -18,7 +18,7 @@ public class cone extends IceCream {
 
 	public String getType() {
 		return type;
-	}
+	} 
 
 
 	public void setType(String type) {

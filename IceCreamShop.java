@@ -74,9 +74,6 @@ public class IceCreamShop {
             System.out.println("Error: "+ e.getMessage());
         }
         confirmOrder();
-
-
-
     }
 
     //method for choosing icecream
@@ -121,7 +118,7 @@ public class IceCreamShop {
 
             totalprice += price1*count;
             //add to orders arraylist
-             IceCream orderItem = new cone(flavorString,price1,"cone",count);
+             IceCream orderItem = new Cone(flavorString,price1,"cone",count);
              orders.add(orderItem);
         }
     }
@@ -162,13 +159,6 @@ public class IceCreamShop {
 
         System.out.println("Total Price: "+ totalprice);
     }
-
-
-
-
-
-
-
     // public static double totalprice(){
 
     // }

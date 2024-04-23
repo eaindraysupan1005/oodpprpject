@@ -12,7 +12,7 @@ public class Cup extends IceCream{
     @Override
 	public String toString(){
 		return super.toString()+ ", "+ type + ", "+ count + " servings";
-	}
+	} 
 
 	public String getType() {
 		return type;
