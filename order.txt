@@ -1,3 +1,1 @@
-strawberry, 30.5, cone, 1 servings
-chocolate, 30.5, cup, 1 servings
-macha, 32.5, cone, 1 servings
+vanilla, 30.5, cone, 4 servings

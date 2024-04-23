@@ -37,16 +37,23 @@ public class IceCreamShop {
         System.out.println("Welcome to GrandBlue IceCream Shop\nHere are the Ice Cream Flavors");
         System.out.println("1. strawberry 30.5\n2. blueberry 33.5\n3. macha 32.5\n4. cookie 32.5\n5. vanilla 30.5\n6. chocolate 30.5\n7. durian 35.5");
                
+        outerloop:
        while(true){
         if(orders.size()>0){
-            System.out.print("Do you want to order again? y or n: ");
+            System.out.print("Do you want to order again? yes or no: ");
             String s1 = input.next();
-            if(s1.equals("y")|| s1.equals("Y")){
+            while(true){
+            if(s1.equals("yes")|| s1.equals("Yes") || s1.equals("YES")){
                 chooseIcecream();
+                break;
             }
-            else if(s1.equals("n") || s1.equals("N")){
-                 break;
-            }           
+            else if(s1.equals("no") || s1.equals("No") || s1.equals("NO")){
+                 break outerloop;
+            }else{
+                System.out.print("Enter only yes or no: ");
+                s1 = input.next();
+            }
+        }          
         }
         else{
             chooseIcecream();
@@ -91,8 +98,8 @@ public class IceCreamShop {
         
         System.out.print("How many servings do you want? ");
         int count = input.nextInt();
-        while(count == 0){
-            System.out.print("Please order at least one item!");
+        while(count<= 0){
+            System.out.print("Please order at least one item! ");
             count= input.nextInt();
         } 
 
@@ -121,14 +128,23 @@ public class IceCreamShop {
 
     public static void confirmOrder(){
         Scanner input = new Scanner(System.in);
-        System.out.print("Do you want to confirm order? y or n: ");
+        outerloop:
+        while (true) {
+            System.out.print("Do you want to confirm order? yes or no: ");
         String s2 = input.next();
-        if(s2.equals("y")|| s2.equals("Y")){
-            viewReceipt();            
-        }else if(s2.equals("n")|| s2.equals("N")){
+        while(true){
+        if(s2.equals("yes")|| s2.equals("Yes") || s2.equals("YES")){
+            viewReceipt();   
+            break outerloop;         
+        }else if(s2.equals("no")|| s2.equals("No") || s2.equals("NO")){
             System.out.println("Good Bye!");
             System.exit(0);
-        }    
+        }else{
+            System.out.print("Enter only yes or no: ");
+            s2 = input.next();
+        }
+        }
+        }         
     }
 
     public static void viewReceipt(){
