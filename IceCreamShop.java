@@ -35,7 +35,7 @@ public class IceCreamShop {
         Scanner input= new Scanner(System.in);
         System.out.println();
         System.out.println("Welcome to GrandBlue IceCream Shop\nHere are the Ice Cream Flavors");
-        System.out.println("1. strawberry 30.5\n2. blueberry 33.5\n3. macha 32.5\n4. cookie 32.5\n5. vanilla 30.5\n6. chocolate 30.5\n7. durian 35.5");
+        System.out.println("1. strawberry 30.5 baht\n2. blueberry 33.5 baht\n3. macha 32.5 baht\n4. cookie 32.5 baht\n5. vanilla 30.5 baht\n6. chocolate 30.5 baht\n7. durian 35.5 baht");
                
         outerloop:
        while(true){
@@ -157,7 +157,7 @@ public class IceCreamShop {
             System.err.println("Error reading file: " + e.getMessage());
         }
 
-        System.out.println("Total Price: "+ totalprice);
+        System.out.println("Total Price: "+ totalprice + " baht");
     }
     // public static double totalprice(){
 

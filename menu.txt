@@ -1,4 +1,4 @@
-strawberry 30.5
+strawberry 30.5 
 blueberry 33.5
 macha 32.5
 cookie 32.5
