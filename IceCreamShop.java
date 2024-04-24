@@ -108,7 +108,7 @@ public class IceCreamShop {
 
             totalprice += price1*count;
            //add to orders arraylist 
-            IceCream orderItem = new Cup(flavorString,price1,"cup",count);
+            IceCream orderItem = new Cup(flavorString,price1,count);
             orders.add(orderItem);
         }
         else if (type == 2){
@@ -118,7 +118,7 @@ public class IceCreamShop {
 
             totalprice += price1*count;
             //add to orders arraylist
-             IceCream orderItem = new Cone(flavorString,price1,"cone",count);
+             IceCream orderItem = new Cone(flavorString,price1,count);
              orders.add(orderItem);
         }
     }
