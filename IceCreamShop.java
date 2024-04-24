@@ -11,7 +11,7 @@ public class IceCreamShop {
 
     public static ArrayList<IceCream> menuItems = new ArrayList<>();
     public static ArrayList<IceCream> orders = new ArrayList<>();
-    public static double totalprice = 0.0;
+    public static double totalPrice = 0.0;
 
     public static void main(String[] args) {
         String filename = "menu.txt";
@@ -93,7 +93,7 @@ public class IceCreamShop {
            String flavorString = temp.getFlavor();
            double price1 = temp.getPrice();
 
-            totalprice += price1*count;
+            totalPrice += price1*count;
            //add to orders arraylist 
             IceCream orderItem = new Cup(flavorString,price1,count);
             orders.add(orderItem);
@@ -103,7 +103,7 @@ public class IceCreamShop {
             String flavorString = temp.getFlavor();
             double price1 = temp.getPrice();
 
-            totalprice += price1*count;
+            totalPrice += price1*count;
             //add to orders arraylist
              IceCream orderItem = new Cone(flavorString,price1,count);
              orders.add(orderItem);
@@ -158,10 +158,8 @@ public class IceCreamShop {
             System.err.println("Error reading file: " + e.getMessage());
         }
 
-        System.out.println("Total Price: "+ totalprice + " baht\nThank you for your purchase. ");
+        System.out.println("Total Price: "+ totalPrice + " baht\nThank you for your purchase. ");
         System.out.println();
     }
-    // public static double totalprice(){
-
-    // }
+    
 }
