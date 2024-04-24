@@ -58,21 +58,8 @@ public class IceCreamShop {
         else{
             chooseIcecream();
         }           
-        }
-        
-        File orderfile = new File("order.txt");
-
-        try(BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))){
-
-            for(IceCream order:orders){
-                bWrite.write(order.toString());
-                bWrite.newLine();
-            }
-
-        }
-        catch(IOException e){
-            System.out.println("Error: "+ e.getMessage());
-        }
+        }       
+       
         confirmOrder();
     }
 
@@ -125,16 +112,30 @@ public class IceCreamShop {
 
     public static void confirmOrder(){
         Scanner input = new Scanner(System.in);
+
         outerloop:
         while (true) {
             System.out.print("Do you want to confirm order? yes or no: ");
         String s2 = input.next();
         while(true){
         if(s2.equals("yes")|| s2.equals("Yes") || s2.equals("YES")){
+             File orderfile = new File("order.txt");
+
+        try(BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))){
+
+            for(IceCream order:orders){
+                bWrite.write(order.toString());
+                bWrite.newLine();
+            }
+
+        }
+        catch(IOException e){
+            System.out.println("Error: "+ e.getMessage());
+        }
             viewReceipt();   
             break outerloop;         
         }else if(s2.equals("no")|| s2.equals("No") || s2.equals("NO")){
-            System.out.println("Good Bye!");
+            System.out.println("Thank you for your visit. Good Bye!");
             System.exit(0);
         }else{
             System.out.print("Enter only yes or no: ");
