@@ -38,7 +38,7 @@ public class IceCreamShop {
                 "1. strawberry 30.5 baht\n2. blueberry 33.5 baht\n3. macha 32.5 baht\n4. cookie 32.5 baht\n5. vanilla 30.5 baht\n6. chocolate 30.5 baht\n7. durian 35.5 baht");
         System.out.print("\n*********************\n");
 
-         while (true) {
+        outerloop: while (true) {
             if (orders.size() > 0) {
                 checkSameType();
                 confirmOrder();
@@ -48,6 +48,26 @@ public class IceCreamShop {
         } // outerloop end
     }
     // main method end
+
+    // method for checking same type
+    public static void checkSameType() {
+        for (int i = 0; i < orders.size() - 1; i++) {
+            if (orders.get(i).getFlavor() == orders.get(i + 1).getFlavor()) {
+                if (orders.get(i).getClass().equals(orders.get(i).getClass())) {
+                    if (orders.get(i) instanceof Cup) {
+                        int newCount = ((Cup) orders.get(i)).getCount() + ((Cup) orders.get(i + 1)).getCount();
+                        ((Cup) orders.get(i)).setCount(newCount);
+                        orders.remove(i + 1);
+                    } else {
+                        int newCount = ((Cone) orders.get(i)).getCount() + ((Cone) orders.get(i + 1)).getCount();
+                        ((Cone) orders.get(i)).setCount(newCount);
+                        orders.remove(i + 1);
+
+                    }
+                }
+            }
+        }
+    }
 
     // method for choosing icecream
     public static void chooseIcecream() {
@@ -263,6 +283,14 @@ public class IceCreamShop {
 
     }
 
+    // method for printing current orders list
+    public static void printCurrentOrder() {
+        System.out.print("*********************\nThis is your order list.\n");
+        for (int i = 0; i < orders.size(); i++) {
+            System.out.println((i + 1) + ". " + orders.get(i).toString());
+        }
+    }
+
     // method for editing orders
     public static void editOrder(int orderIndex, int editType) {
 
@@ -333,8 +361,7 @@ public class IceCreamShop {
                     ((Cone) temp).setCount(newCount);
                 }
             }
-        }
-        else if(editType == 4){
+        } else if (editType == 4) {
             orders.remove(orderIndex);
         }
     }
@@ -370,30 +397,4 @@ public class IceCreamShop {
         return c;
     }
 
-    // method for checking same type
-    public static void checkSameType() {
-        for (int i = 0; i < orders.size() - 1; i++) {
-            if (orders.get(i).getFlavor() == orders.get(i + 1).getFlavor()) {
-                if (orders.get(i).getClass().equals(orders.get(i).getClass())) {
-                    if (orders.get(i) instanceof Cup) {
-                        int newCount = ((Cup) orders.get(i)).getCount() + ((Cup) orders.get(i + 1)).getCount();
-                        ((Cup) orders.get(i)).setCount(newCount);
-                        orders.remove(i + 1);
-                    } else {
-                        int newCount = ((Cone) orders.get(i)).getCount() + ((Cone) orders.get(i + 1)).getCount();
-                        ((Cone) orders.get(i)).setCount(newCount);
-                        orders.remove(i + 1);
-
-                    }
-                }
-            }
-        }
-    }
-
-    public static void printCurrentOrder() {
-        System.out.print("*********************\nThis is your order list.\n");
-        for (int i = 0; i < orders.size(); i++) {
-            System.out.println((i + 1) + ". " + orders.get(i).toString());
-        }
-    }
 }
