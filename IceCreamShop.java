@@ -49,26 +49,6 @@ public class IceCreamShop {
     }
     // main method end
 
-    // method for checking same type
-    public static void checkSameType() {
-        for (int i = 0; i < orders.size() - 1; i++) {
-            if (orders.get(i).getFlavor() == orders.get(i + 1).getFlavor()) {
-                if (orders.get(i).getClass().equals(orders.get(i).getClass())) {
-                    if (orders.get(i) instanceof Cup) {
-                        int newCount = ((Cup) orders.get(i)).getCount() + ((Cup) orders.get(i + 1)).getCount();
-                        ((Cup) orders.get(i)).setCount(newCount);
-                        orders.remove(i + 1);
-                    } else {
-                        int newCount = ((Cone) orders.get(i)).getCount() + ((Cone) orders.get(i + 1)).getCount();
-                        ((Cone) orders.get(i)).setCount(newCount);
-                        orders.remove(i + 1);
-
-                    }
-                }
-            }
-        }
-    }
-
     // method for choosing icecream
     public static void chooseIcecream() {
 
@@ -123,6 +103,26 @@ public class IceCreamShop {
             // add to orders arraylist
             IceCream orderItem = new Cone(flavorString, price1, count);
             orders.add(orderItem);
+        }
+    }
+
+    // method for checking same type
+    public static void checkSameType() {
+        for (int i = 0; i < orders.size() - 1; i++) {
+            if (orders.get(i).getFlavor() == orders.get(i + 1).getFlavor()) {
+                if (orders.get(i).getClass().equals(orders.get(i).getClass())) {
+                    if (orders.get(i) instanceof Cup) {
+                        int newCount = ((Cup) orders.get(i)).getCount() + ((Cup) orders.get(i + 1)).getCount();
+                        ((Cup) orders.get(i)).setCount(newCount);
+                        orders.remove(i + 1);
+                    } else {
+                        int newCount = ((Cone) orders.get(i)).getCount() + ((Cone) orders.get(i + 1)).getCount();
+                        ((Cone) orders.get(i)).setCount(newCount);
+                        orders.remove(i + 1);
+
+                    }
+                }
+            }
         }
     }
 
