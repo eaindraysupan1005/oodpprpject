@@ -191,42 +191,6 @@ public class IceCreamShop {
         }
     }
 
-    // method for viewing receipt
-    public static void viewReceipt() {
-
-        String filename = "order.txt";
-        System.out.print("*********************\n");
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
-        }
-
-        System.out.println("Total Price: " + totalPrice(orders)
-                + " baht\nThank you for your purchase! We hope you will enjoy your ice cream. ");
-        System.out.println();
-    }
-
-    // calcute the totalPrice
-    public static double totalPrice(ArrayList<IceCream> orders) {
-
-        double total = 0.0;
-        for (int i = 0; i < orders.size(); i++) {
-            if (orders.get(i) instanceof Cup) {
-                Cup temp = (Cup) orders.get(i);
-                total += temp.getPrice() * temp.getCount();
-            } else if (orders.get(i) instanceof Cone) {
-                Cone temp = (Cone) orders.get(i);
-                total += temp.getPrice() * temp.getCount();
-            }
-        }
-        return total;
-
-    }
-
     // method for modifying orders
     public static void modifyOrder() {
 
@@ -395,6 +359,42 @@ public class IceCreamShop {
             }
         }
         return c;
+    }
+
+    //method for calcute the totalPrice
+    public static double totalPrice(ArrayList<IceCream> orders) {
+
+        double total = 0.0;
+        for (int i = 0; i < orders.size(); i++) {
+            if (orders.get(i) instanceof Cup) {
+                Cup temp = (Cup) orders.get(i);
+                total += temp.getPrice() * temp.getCount();
+            } else if (orders.get(i) instanceof Cone) {
+                Cone temp = (Cone) orders.get(i);
+                total += temp.getPrice() * temp.getCount();
+            }
+        }
+        return total;
+
+    }
+
+    // method for viewing receipt
+    public static void viewReceipt() {
+
+        String filename = "order.txt";
+        System.out.print("*********************\n");
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+
+        System.out.println("Total Price: " + totalPrice(orders)
+                + " baht\nThank you for your purchase! We hope you will enjoy your ice cream. ");
+        System.out.println();
     }
 
 }
