@@ -38,7 +38,7 @@ public class IceCreamShop {
                 "1. strawberry 30.5 baht\n2. blueberry 33.5 baht\n3. macha 32.5 baht\n4. cookie 32.5 baht\n5. vanilla 30.5 baht\n6. chocolate 30.5 baht\n7. durian 35.5 baht");
         System.out.print("\n*********************\n");
 
-        outerloop: while (true) {
+         while (true) {
             if (orders.size() > 0) {
                 checkSameType();
                 confirmOrder();
@@ -46,7 +46,6 @@ public class IceCreamShop {
                 chooseIcecream();
             }
         } // outerloop end
-
     }
     // main method end
 
@@ -111,38 +110,65 @@ public class IceCreamShop {
     public static void confirmOrder() {
         Scanner input = new Scanner(System.in);
         System.out.println(
-                "*********************\n1: Do you want to confirm order?\n2: Do you want to modify your order?\n3: Do you want to Order more items?\n4. Do you want to exit? ");
+                "*********************\n1: Do you want to view your order?\n2: Do you want to Confirm your order?\n3: Do you want to modify your order?\n4: Do you want to Order more items?\n5. Do you want to exit? ");
         String s2 = input.next();
-        while (!s2.equals("1") && !s2.equals("2") && !s2.equals("3") && !s2.equals("4")) {
-            System.out.println("Choose only 1 to 4: ");
+        while (!s2.equals("1") && !s2.equals("2") && !s2.equals("3") && !s2.equals("4") && !s2.equals("5")) {
+            System.out.println("Choose only 1 to 5: ");
             s2 = input.next();
         }
 
         if (s2.equals("1")) {
-            // file writing start
-            File orderfile = new File("order.txt");
-            try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
 
-                for (IceCream order : orders) {
-                    bWrite.write(order.toString());
-                    bWrite.newLine();
+            printCurrentOrder();
+            System.out.print("*********************\n1. Confirm the order, 2.Edit the order, 3.Exit : ");
+            String s3 = input.next();
+
+            while (true) {
+                if (!s3.equals("1") && !s3.equals("2") && !s3.equals("3")) {
+                    System.out.println("Enter only 1 to 3: ");
+                    s3 = input.next();
+                } else {
+                    break;
                 }
-            } catch (IOException e) {
-                System.out.println("Error: " + e.getMessage());
             }
-            // file writing end
+
+            if (s3.equals("1")) {
+                // file writing start
+                File orderfile = new File("order.txt");
+                try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
+
+                    for (IceCream order : orders) {
+                        bWrite.write(order.toString());
+                        bWrite.newLine();
+                    }
+                } catch (IOException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+                // file writing end
+                viewReceipt();
+                System.exit(0);
+
+            } else if (s3.equals("2")) {
+                modifyOrder();
+                System.out.println("Your Orders have been UPDATED!");
+                printCurrentOrder();
+            } else if (s3.equals("3")) {
+                System.out.println("*********************\nThank you for your visit. Good Bye!\n");
+                System.exit(0);
+            }
+        } else if (s2.equals("2")) {
             viewReceipt();
             System.exit(0);
-        } else if (s2.equals("2")) {
+        } else if (s2.equals("3")) {
             modifyOrder();
             System.out.println("Your Orders Updated!");
-        } else if (s2.equals("3")) {
+            printCurrentOrder();
+        } else if (s2.equals("4")) {
             chooseIcecream();
         } else {
             System.out.println("*********************\nThank you for your visit. Good Bye!\n");
             System.exit(0);
         }
-
     }
 
     // method for viewing receipt
@@ -186,19 +212,13 @@ public class IceCreamShop {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("*********************\nThis is your order list.\n");
-        for (int i = 0; i < orders.size(); i++) {
-            System.out.println((i + 1) + ". " + orders.get(i).toString());
-        }
-        System.out.print("*********************\n");
-
+        printCurrentOrder();
         if (orders.size() > 1) {
             int edit = 0;
-
             while (true) {
                 try {
                     // Get input
-                    System.out.print("Enter the order number that you want to modify: ");
+                    System.out.print("*********************\nEnter the order number that you want to modify: ");
                     edit = input.nextInt();
                     break;
                 } catch (InputMismatchException e) {
@@ -220,10 +240,10 @@ public class IceCreamShop {
                 }
             }
 
-            System.out.print("Do you want to edit? (1.flavor 2.type 3.quantity) ");
+            System.out.print("What do you want to change? (1.flavor 2.type 3.quantity 4. Delete the item) ");
             String s3 = input.next();
-            while (!s3.equals("1") && !s3.equals("2") && !s3.equals("3")) {
-                System.out.print("Choose only 1 to 3: ");
+            while (!s3.equals("1") && !s3.equals("2") && !s3.equals("3") && !s3.equals("4")) {
+                System.out.print("Choose only 1 to 4: ");
                 s3 = input.next();
             }
             int etype = Integer.parseInt(s3);
@@ -231,7 +251,7 @@ public class IceCreamShop {
             // checkSameType();
 
         } else {
-            System.out.print("*********************\nWhat do you want to edit? (1.flavor 2.type 3.quantity): ");
+            System.out.print("*********************\nWhat do you want to change? (1.flavor 2.type 3.quantity): ");
             String s3 = input.next();
             while (!s3.equals("1") && !s3.equals("2") && !s3.equals("3")) {
                 System.out.println("Choose only 1 to 3: ");
@@ -314,6 +334,9 @@ public class IceCreamShop {
                 }
             }
         }
+        else if(editType == 4){
+            orders.remove(orderIndex);
+        }
     }
 
     // method for quantity valid
@@ -364,6 +387,13 @@ public class IceCreamShop {
                     }
                 }
             }
+        }
+    }
+
+    public static void printCurrentOrder() {
+        System.out.print("*********************\nThis is your order list.\n");
+        for (int i = 0; i < orders.size(); i++) {
+            System.out.println((i + 1) + ". " + orders.get(i).toString());
         }
     }
 }
