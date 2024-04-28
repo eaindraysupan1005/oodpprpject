@@ -177,7 +177,7 @@ public class IceCreamShop {
                 System.exit(0);
             }
         } else if (s2.equals("2")) {
-            / file writing start
+            // file writing start
                 File orderfile = new File("order.txt");
                 try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
 
