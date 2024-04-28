@@ -141,8 +141,8 @@ public class IceCreamShop {
             String viewOption = input.next();
 
             while (true) {
-                if (!viewOption.equals("1") && !viewOption.equals("2") && !viewOption.equals("3")) {
-                    System.out.println("Enter only 1 to 3: ");
+                if (!viewOption.equals("1") && !viewOption.equals("2") && !viewOption.equals("3") && !viewOption.equals("4")) {
+                    System.out.println("Enter only 1 to 4: ");
                     viewOption = input.next();
                 } else {
                     break;
