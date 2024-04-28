@@ -1,0 +1,2 @@
+macha, 32.5, cup, 2 servings
+blueberry, 33.5, cone, 3 servings

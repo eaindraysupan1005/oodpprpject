@@ -110,17 +110,14 @@ public class IceCreamShop {
     public static void checkSameType() {
         for (int i = 0; i < orders.size() - 1; i++) {
             if (orders.get(i).getFlavor() == orders.get(i + 1).getFlavor()) {
-                if (orders.get(i).getClass().equals(orders.get(i).getClass())) {
-                    if (orders.get(i) instanceof Cup) {
-                        int newCount = ((Cup) orders.get(i)).getCount() + ((Cup) orders.get(i + 1)).getCount();
-                        ((Cup) orders.get(i)).setCount(newCount);
-                        orders.remove(i + 1);
-                    } else {
-                        int newCount = ((Cone) orders.get(i)).getCount() + ((Cone) orders.get(i + 1)).getCount();
-                        ((Cone) orders.get(i)).setCount(newCount);
-                        orders.remove(i + 1);
-
-                    }
+                if (orders.get(i) instanceof Cup && orders.get(i + 1) instanceof Cup) {
+                    int newCount = ((Cup) orders.get(i)).getCount() + ((Cup) orders.get(i + 1)).getCount();
+                    ((Cup) orders.get(i)).setCount(newCount);
+                    orders.remove(i + 1);
+                } else if (orders.get(i) instanceof Cone && orders.get(i + 1) instanceof Cone) {
+                    int newCount = ((Cone) orders.get(i)).getCount() + ((Cone) orders.get(i + 1)).getCount();
+                    ((Cone) orders.get(i)).setCount(newCount);
+                    orders.remove(i + 1);
                 }
             }
         }
@@ -178,17 +175,17 @@ public class IceCreamShop {
             }
         } else if (s2.equals("2")) {
             // file writing start
-                File orderfile = new File("order.txt");
-                try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
+            File orderfile = new File("order.txt");
+            try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
 
-                    for (IceCream order : orders) {
-                        bWrite.write(order.toString());
-                        bWrite.newLine();
-                    }
-                } catch (IOException e) {
-                    System.out.println("Error: " + e.getMessage());
+                for (IceCream order : orders) {
+                    bWrite.write(order.toString());
+                    bWrite.newLine();
                 }
-                // file writing end
+            } catch (IOException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+            // file writing end
             viewReceipt();
             System.exit(0);
         } else if (s2.equals("3")) {
@@ -373,7 +370,7 @@ public class IceCreamShop {
         return c;
     }
 
-    //method for calcute the totalPrice
+    // method for calcute the totalPrice
     public static double totalPrice(ArrayList<IceCream> orders) {
 
         double total = 0.0;
