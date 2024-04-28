@@ -249,10 +249,10 @@ public class IceCreamShop {
             // checkSameType();
 
         } else {
-            System.out.print("*********************\nWhat do you want to change? (1.flavor 2.type 3.quantity 4. Delete the item): ");
+            System.out.print("*********************\nWhat do you want to change? (1.flavor 2.type 3.quantity): ");
             String s3 = input.next();
-            while (!s3.equals("1") && !s3.equals("2") && !s3.equals("3")  && !s3.equals("4")) {
-                System.out.println("Choose only 1 to 4: ");
+            while (!s3.equals("1") && !s3.equals("2") && !s3.equals("3")) {
+                System.out.println("Choose only 1 to 3: ");
                 s3 = input.next();
             }
             int etype = Integer.parseInt(s3);
