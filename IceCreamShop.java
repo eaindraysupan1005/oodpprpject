@@ -30,7 +30,6 @@ public class IceCreamShop {
         }
         // reading the file end
 
-        Scanner input = new Scanner(System.in);
         System.out.println();
         System.out.println(
                 "Welcome to GrandBlue IceCream Shop\n*********************\nHere are the Ice Cream Flavors and Prices");
@@ -38,14 +37,14 @@ public class IceCreamShop {
                 "1. strawberry 30.5 baht\n2. blueberry 33.5 baht\n3. macha 32.5 baht\n4. cookie 32.5 baht\n5. vanilla 30.5 baht\n6. chocolate 30.5 baht\n7. durian 35.5 baht");
         System.out.print("\n*********************\n");
 
-        outerloop: while (true) {
+        while (true) {
             if (orders.size() > 0) {
                 checkSameType();
                 confirmOrder();
             } else {
                 chooseIcecream();
             }
-        } // outerloop end
+        }
     }
     // main method end
 
@@ -129,7 +128,8 @@ public class IceCreamShop {
         System.out.println(
                 "*********************\n1: Do you want to view your order?\n2: Do you want to Confirm your order?\n3: Do you want to modify your order?\n4: Do you want to Order more items?\n5. Do you want to exit? ");
         String mainOption = input.next();
-        while (!mainOption.equals("1") && !mainOption.equals("2") && !mainOption.equals("3") && !mainOption.equals("4") && !mainOption.equals("5")) {
+        while (!mainOption.equals("1") && !mainOption.equals("2") && !mainOption.equals("3") && !mainOption.equals("4")
+                && !mainOption.equals("5")) {
             System.out.println("Choose only 1 to 5: ");
             mainOption = input.next();
         }
@@ -137,11 +137,13 @@ public class IceCreamShop {
         if (mainOption.equals("1")) {
 
             printCurrentOrder();
-            System.out.print("*********************\n1. Confirm the order, 2.Modify the order, 3.Add more Items, 4.Exit : ");
+            System.out.print(
+                    "*********************\n1. Confirm the order, 2.Modify the order, 3.Add more Items, 4.Exit : ");
             String viewOption = input.next();
 
             while (true) {
-                if (!viewOption.equals("1") && !viewOption.equals("2") && !viewOption.equals("3") && !viewOption.equals("4")) {
+                if (!viewOption.equals("1") && !viewOption.equals("2") && !viewOption.equals("3")
+                        && !viewOption.equals("4")) {
                     System.out.println("Enter only 1 to 4: ");
                     viewOption = input.next();
                 } else {
@@ -171,7 +173,7 @@ public class IceCreamShop {
                 printCurrentOrder();
             } else if (viewOption.equals("3")) {
                 chooseIcecream();
-            }else if(viewOption.equals("4")){
+            } else if (viewOption.equals("4")) {
                 System.out.println("*********************\nThank you for your visit. Good Bye!\n");
                 System.exit(0);
             }
