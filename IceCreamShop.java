@@ -128,28 +128,28 @@ public class IceCreamShop {
         Scanner input = new Scanner(System.in);
         System.out.println(
                 "*********************\n1: Do you want to view your order?\n2: Do you want to Confirm your order?\n3: Do you want to modify your order?\n4: Do you want to Order more items?\n5. Do you want to exit? ");
-        String s2 = input.next();
-        while (!s2.equals("1") && !s2.equals("2") && !s2.equals("3") && !s2.equals("4") && !s2.equals("5")) {
+        String mainOption = input.next();
+        while (!mainOption.equals("1") && !mainOption.equals("2") && !mainOption.equals("3") && !mainOption.equals("4") && !mainOption.equals("5")) {
             System.out.println("Choose only 1 to 5: ");
-            s2 = input.next();
+            mainOption = input.next();
         }
 
-        if (s2.equals("1")) {
+        if (mainOption.equals("1")) {
 
             printCurrentOrder();
-            System.out.print("*********************\n1. Confirm the order, 2.Edit the order, 3.Exit : ");
-            String s3 = input.next();
+            System.out.print("*********************\n1. Confirm the order, 2.Modify the order, 3.Add more Items, 4.Exit : ");
+            String viewOption = input.next();
 
             while (true) {
-                if (!s3.equals("1") && !s3.equals("2") && !s3.equals("3")) {
+                if (!viewOption.equals("1") && !viewOption.equals("2") && !viewOption.equals("3")) {
                     System.out.println("Enter only 1 to 3: ");
-                    s3 = input.next();
+                    viewOption = input.next();
                 } else {
                     break;
                 }
             }
 
-            if (s3.equals("1")) {
+            if (viewOption.equals("1")) {
                 // file writing start
                 File orderfile = new File("order.txt");
                 try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
@@ -165,15 +165,18 @@ public class IceCreamShop {
                 viewReceipt();
                 System.exit(0);
 
-            } else if (s3.equals("2")) {
+            } else if (viewOption.equals("2")) {
                 modifyOrder();
                 System.out.println("Your Orders have been UPDATED!");
                 printCurrentOrder();
-            } else if (s3.equals("3")) {
+            } else if (viewOption.equals("3")) {
+                chooseIcecream();
+            }else if(viewOption.equals("4")){
                 System.out.println("*********************\nThank you for your visit. Good Bye!\n");
                 System.exit(0);
             }
-        } else if (s2.equals("2")) {
+
+        } else if (mainOption.equals("2")) {
             // file writing start
             File orderfile = new File("order.txt");
             try (BufferedWriter bWrite = new BufferedWriter(new FileWriter(orderfile))) {
@@ -188,11 +191,11 @@ public class IceCreamShop {
             // file writing end
             viewReceipt();
             System.exit(0);
-        } else if (s2.equals("3")) {
+        } else if (mainOption.equals("3")) {
             modifyOrder();
             System.out.println("Your Orders Updated!");
             printCurrentOrder();
-        } else if (s2.equals("4")) {
+        } else if (mainOption.equals("4")) {
             chooseIcecream();
         } else {
             System.out.println("*********************\nThank you for your visit. Good Bye!\n");
